@@ -1,0 +1,9 @@
+object fmMain: TfmMain
+  Left = 350
+  Height = 479
+  Top = 250
+  Width = 776
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Balança Virtual'
+  Position = poDesktopCenter
+end
