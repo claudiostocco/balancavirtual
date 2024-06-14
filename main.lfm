@@ -5,5 +5,235 @@ object fmMain: TfmMain
   Width = 776
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Balança Virtual'
+  ClientHeight = 479
+  ClientWidth = 776
   Position = poDesktopCenter
+  object gbCfg: TGroupBox
+    Left = 0
+    Height = 80
+    Top = 0
+    Width = 776
+    Align = alTop
+    Caption = 'Configurações'
+    ClientHeight = 60
+    ClientWidth = 772
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    object cbParidade: TComboBox
+      Left = 9
+      Height = 23
+      Top = 27
+      Width = 48
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        'n'
+        'o'
+        'e'
+        'm'
+        's'
+      )
+      Style = csDropDownList
+      TabOrder = 0
+      Text = 'n'
+    end
+    object Label1: TLabel
+      Left = 9
+      Height = 15
+      Top = 10
+      Width = 48
+      Caption = 'Paridade'
+    end
+    object cbBParada: TComboBox
+      Left = 66
+      Height = 23
+      Top = 27
+      Width = 51
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        '1'
+        '1,5'
+        '2'
+      )
+      Style = csDropDownList
+      TabOrder = 1
+      Text = '1'
+    end
+    object Label2: TLabel
+      Left = 66
+      Height = 15
+      Top = 10
+      Width = 51
+      Caption = 'B. Parada'
+    end
+    object Label3: TLabel
+      Left = 126
+      Height = 15
+      Top = 10
+      Width = 48
+      Caption = 'B. Dados'
+    end
+    object cbBDados: TComboBox
+      Left = 126
+      Height = 23
+      Top = 27
+      Width = 48
+      ItemHeight = 15
+      ItemIndex = 1
+      Items.Strings = (
+        '7'
+        '8'
+      )
+      Style = csDropDownList
+      TabOrder = 2
+      Text = '8'
+    end
+    object cbVelocidade: TComboBox
+      Left = 183
+      Height = 23
+      Top = 27
+      Width = 68
+      ItemHeight = 15
+      ItemIndex = 10
+      Items.Strings = (
+        '300'
+        '600'
+        '1200'
+        '2400'
+        '4800'
+        '9600'
+        '19200'
+        '38400'
+        '56000'
+        '115200'
+        '128000'
+      )
+      TabOrder = 3
+      Text = '128000'
+    end
+    object Label4: TLabel
+      Left = 183
+      Height = 15
+      Top = 10
+      Width = 60
+      Caption = 'Velocidade'
+    end
+    object cbPorta: TComboBox
+      Left = 259
+      Height = 23
+      Top = 27
+      Width = 68
+      ItemHeight = 15
+      ItemIndex = 9
+      Items.Strings = (
+        'COM1'
+        'COM2'
+        'COM3'
+        'COM4'
+        'COM5'
+        'COM6'
+        'COM7'
+        'COM8'
+        'COM9'
+        'COM10'
+        'COM11'
+        'COM12'
+        'COM13'
+        'COM14'
+        'COM15'
+        'COM16'
+        'COM17'
+        'COM18'
+        'COM19'
+        'COM20'
+      )
+      Style = csDropDownList
+      TabOrder = 4
+      Text = 'COM10'
+    end
+    object Label5: TLabel
+      Left = 259
+      Height = 15
+      Top = 10
+      Width = 30
+      Caption = 'Porta'
+    end
+    object cbMarca: TComboBox
+      Left = 335
+      Height = 23
+      Top = 27
+      Width = 87
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        'ELGIN'
+        'FILIZOLA'
+        'TOLEDO'
+      )
+      Style = csDropDownList
+      TabOrder = 5
+      Text = 'ELGIN'
+    end
+    object Label6: TLabel
+      Left = 335
+      Height = 15
+      Top = 10
+      Width = 34
+      Caption = 'Marca'
+    end
+    object bbIniciaBalanca: TBitBtn
+      Left = 447
+      Height = 40
+      Top = 10
+      Width = 123
+      Caption = '&Inicia Balanca'
+      OnClick = bbIniciaBalancaClick
+      TabOrder = 6
+    end
+    object sePeso: TSpinEdit
+      Left = 612
+      Height = 29
+      Top = 21
+      Width = 81
+      Font.Height = -16
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 7
+    end
+    object Label7: TLabel
+      Left = 612
+      Height = 15
+      Top = 6
+      Width = 44
+      Caption = 'Peso (g)'
+    end
+  end
+  object mmCom: TMemo
+    Left = 0
+    Height = 399
+    Top = 80
+    Width = 776
+    Align = alClient
+    TabOrder = 1
+  end
+  object dpsCom: TDataPortSerial
+    Port = 'COM1'
+    BaudRate = 9600
+    DataBits = 8
+    Parity = 'N'
+    StopBits = stb2
+    FlowControl = sfcNone
+    SoftFlow = False
+    HardFlow = False
+    MinDataBytes = 1
+    HalfDuplex = False
+    Active = False
+    OnDataAppear = dpsComDataAppear
+    OnModemStatus = dpsComModemStatus
+    OnDataAppearUnsafe = dpsComDataAppearUnsafe
+    Left = 532
+    Top = 112
+  end
 end
