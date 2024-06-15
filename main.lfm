@@ -8,6 +8,7 @@ object fmMain: TfmMain
   ClientHeight = 479
   ClientWidth = 776
   Position = poDesktopCenter
+  LCLVersion = '3.2.0.0'
   object gbCfg: TGroupBox
     Left = 0
     Height = 80
@@ -15,8 +16,8 @@ object fmMain: TfmMain
     Width = 776
     Align = alTop
     Caption = 'Configurações'
-    ClientHeight = 60
-    ClientWidth = 772
+    ClientHeight = 63
+    ClientWidth = 774
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0

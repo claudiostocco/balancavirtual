@@ -73,7 +73,7 @@ begin
 end;
 
 procedure TfmMain.dpsComDataAppearUnsafe(Sender: TObject);
-var sReceive, sSend, sTmp: String;
+var sReceive, sSend: String;
 begin
   sReceive := dpsCom.Pull;
   mmCom.Lines.Add('Recebeu <- '+sReceive);
