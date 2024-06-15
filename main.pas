@@ -21,6 +21,7 @@ type
     cbPorta: TComboBox;
     cbMarca: TComboBox;
     dpsCom: TDataPortSerial;
+    eDispVirtual: TEdit;
     gbCfg: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
@@ -29,6 +30,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    Label8: TLabel;
     mmCom: TMemo;
     sePeso: TSpinEdit;
     procedure bbIniciaBalancaClick(Sender: TObject);
@@ -48,6 +50,11 @@ const
   STX = $2;
   ETX = $3;
   ENQ = $5;
+  {$ifndef MSWINDOWS}
+    SERIAL_NAME = '/dev/ttyS';
+  {$else}
+    SERIAL_NAME = 'COM';
+  {$endif}
 
 implementation
 
@@ -61,7 +68,10 @@ begin
   dpsCom.StopBits := TSerialStopBits(cbBParada.ItemIndex);
   dpsCom.DataBits := StrToInt(cbBDados.Text);
   dpsCom.BaudRate := StrToInt(cbVelocidade.Text);
-  dpsCom.Port := cbPorta.Text;
+  if eDispVirtual.Text = '' then
+    dpsCom.Port := SERIAL_NAME+cbPorta.Text
+  else
+    dpsCom.Port := eDispVirtual.Text+cbPorta.Text;
   dpsCom.Active := True;
   Sleep(150);
   bbIniciaBalanca.Enabled := not dpsCom.Active;

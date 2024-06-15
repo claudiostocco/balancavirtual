@@ -1,0 +1,7 @@
+1 - Instalar socat
+2 - Crie a porta virtual
+  - Sem especificar o nome da porta
+    socat -d -d pty,raw,echo=0 pty,raw,echo=0
+
+  - Especificando o nome da porta
+    socat -d -d PTY,link=/dev/ttyVirtualS0,echo=0 PTY,link=/dev/ttyVirtualS1,echo=0
