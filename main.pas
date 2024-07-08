@@ -32,13 +32,14 @@ type
     Label7: TLabel;
     Label8: TLabel;
     mmCom: TMemo;
+    rgResponder: TRadioGroup;
     sePeso: TSpinEdit;
     procedure bbIniciaBalancaClick(Sender: TObject);
     procedure dpsComDataAppear(Sender: TObject);
     procedure dpsComDataAppearUnsafe(Sender: TObject);
     procedure dpsComModemStatus(Sender: TObject);
   private
-
+    function PerguntaSeResponde: Boolean;
   public
 
   end;
@@ -84,14 +85,19 @@ end;
 
 procedure TfmMain.dpsComDataAppearUnsafe(Sender: TObject);
 var sReceive, sSend: String;
+    iPeso: Integer;
 begin
   sReceive := dpsCom.Pull;
   mmCom.Lines.Add('Recebeu <- '+sReceive);
   if sReceive.Contains(Chr(ENQ)) then
   begin
+    if (rgResponder.ItemIndex = 0) or PerguntaSeResponde then
+      iPeso := sePeso.Value
+    else
+      iPeso := 0;
     case cbMarca.ItemIndex of
-      0,2: sSend := Format(Chr(STX)+'%.5d'+Chr(ETX),[sePeso.Value]);
-      1: sSend := Format(Chr(STX)+' %.5d %.5d %.5d'+Chr(ETX),[sePeso.Value]);
+      0,2: sSend := Format(Chr(STX)+'%.5d'+Chr(ETX),[iPeso]);
+      1: sSend := Format(Chr(STX)+' %.5d %.5d %.5d'+Chr(ETX),[iPeso]);
     end;
     dpsCom.Push(sSend);
     mmCom.Lines.Add('Enviou -> '+sSend);
@@ -100,6 +106,11 @@ end;
 
 procedure TfmMain.dpsComModemStatus(Sender: TObject);
 begin
+end;
+
+function TfmMain.PerguntaSeResponde: Boolean;
+begin
+  Result := MessageDlg('Confirma','Responder?',TMsgDlgType.mtConfirmation,mbYesNo,0) = mrYes;
 end;
 
 end.
