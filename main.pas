@@ -39,6 +39,7 @@ type
     sePeso: TSpinEdit;
     tsTesteBalanca: TTabSheet;
     tsBalancaVirtual: TTabSheet;
+    procedure bbEnviarReqClick(Sender: TObject);
     procedure bbIniciaBalancaClick(Sender: TObject);
     procedure dpsComDataAppear(Sender: TObject);
     procedure dpsComDataAppearUnsafe(Sender: TObject);
@@ -69,17 +70,23 @@ implementation
 
 procedure TfmMain.bbIniciaBalancaClick(Sender: TObject);
 begin
-  dpsCom.Parity := cbParidade.Text[1];
+  dpsCom.Parity := UpperCase(cbParidade.Text)[1];
   dpsCom.StopBits := TSerialStopBits(cbBParada.ItemIndex);
   dpsCom.DataBits := StrToInt(cbBDados.Text);
   dpsCom.BaudRate := StrToInt(cbVelocidade.Text);
   if eDispVirtual.Text = '' then
-    dpsCom.Port := SERIAL_NAME+cbPorta.Text
-  else
-    dpsCom.Port := eDispVirtual.Text+cbPorta.Text;
+  begin
+    dpsCom.Port := SERIAL_NAME+cbPorta.Text;
+  end else
+    dpsCom.Port := eDispVirtual.Text;
   dpsCom.Active := True;
-  Sleep(150);
+  Sleep(500);
   bbIniciaBalanca.Enabled := not dpsCom.Active;
+end;
+
+procedure TfmMain.bbEnviarReqClick(Sender: TObject);
+begin
+  dpsCom.Push('#5#13#10');
 end;
 
 procedure TfmMain.dpsComDataAppear(Sender: TObject);

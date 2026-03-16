@@ -22,9 +22,10 @@ object fmMain: TfmMain
     TabOrder = 0
     object cbParidade: TComboBox
       Left = 5
-      Height = 29
+      Height = 32
       Top = 19
-      Width = 48
+      Width = 54
+      AutoSize = False
       ItemHeight = 0
       ItemIndex = 0
       Items.Strings = (
@@ -46,10 +47,11 @@ object fmMain: TfmMain
       Caption = 'Paridade'
     end
     object cbBParada: TComboBox
-      Left = 60
-      Height = 29
+      Left = 68
+      Height = 32
       Top = 19
-      Width = 51
+      Width = 56
+      AutoSize = False
       ItemHeight = 0
       ItemIndex = 0
       Items.Strings = (
@@ -62,24 +64,25 @@ object fmMain: TfmMain
       Text = '1'
     end
     object Label2: TLabel
-      Left = 60
+      Left = 68
       Height = 17
       Top = 2
       Width = 56
       Caption = 'B. Parada'
     end
     object Label3: TLabel
-      Left = 118
+      Left = 133
       Height = 17
       Top = 2
       Width = 51
       Caption = 'B. Dados'
     end
     object cbBDados: TComboBox
-      Left = 118
-      Height = 29
+      Left = 133
+      Height = 32
       Top = 19
-      Width = 48
+      Width = 51
+      AutoSize = False
       ItemHeight = 0
       ItemIndex = 1
       Items.Strings = (
@@ -91,10 +94,11 @@ object fmMain: TfmMain
       Text = '8'
     end
     object cbVelocidade: TComboBox
-      Left = 172
-      Height = 34
+      Left = 193
+      Height = 32
       Top = 19
-      Width = 75
+      Width = 100
+      AutoSize = False
       ItemHeight = 0
       ItemIndex = 5
       Items.Strings = (
@@ -114,17 +118,18 @@ object fmMain: TfmMain
       Text = '9600'
     end
     object Label4: TLabel
-      Left = 172
+      Left = 193
       Height = 17
       Top = 2
       Width = 66
       Caption = 'Velocidade'
     end
     object cbPorta: TComboBox
-      Left = 252
-      Height = 29
+      Left = 302
+      Height = 32
       Top = 19
-      Width = 46
+      Width = 68
+      AutoSize = False
       ItemHeight = 0
       ItemIndex = 9
       Items.Strings = (
@@ -149,12 +154,11 @@ object fmMain: TfmMain
         '19'
         '20'
       )
-      Style = csDropDownList
       TabOrder = 4
       Text = '10'
     end
     object Label5: TLabel
-      Left = 252
+      Left = 302
       Height = 17
       Top = 2
       Width = 32
@@ -184,37 +188,38 @@ object fmMain: TfmMain
       Caption = 'Marca'
     end
     object Label8: TLabel
-      Left = 302
+      Left = 196
       Height = 17
-      Top = 2
+      Top = 51
       Width = 74
       Caption = 'Disp. Virtual'
     end
     object eDispVirtual: TEdit
-      Left = 302
+      Left = 196
       Height = 34
-      Top = 17
-      Width = 81
+      Top = 66
+      Width = 172
       TabOrder = 6
+      Text = '/dev/pts/4'
     end
     object PageControl1: TPageControl
-      Left = 400
+      Left = 435
       Height = 105
       Top = 0
-      Width = 398
-      ActivePage = tsTesteBalanca
+      Width = 363
+      ActivePage = tsBalancaVirtual
       Align = alRight
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 7
       object tsBalancaVirtual: TTabSheet
         Caption = 'Balança Virtual'
         ClientHeight = 74
-        ClientWidth = 388
+        ClientWidth = 353
         object bbIniciaBalanca: TBitBtn
-          Left = 12
+          Left = 9
           Height = 40
           Top = 18
-          Width = 127
+          Width = 130
           Caption = '&Inicia Balanca'
           Glyph.Data = {
             F6060000424DF806000000000000360000002800000018000000180000000100
@@ -278,10 +283,10 @@ object fmMain: TfmMain
           OnClick = bbIniciaBalancaClick
         end
         object rgResponder: TRadioGroup
-          Left = 166
+          Left = 153
           Height = 57
           Top = 7
-          Width = 89
+          Width = 92
           AutoFill = True
           Caption = 'Responder'
           ChildSizing.LeftRightSpacing = 6
@@ -292,7 +297,7 @@ object fmMain: TfmMain
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 1
           ClientHeight = 39
-          ClientWidth = 87
+          ClientWidth = 90
           ItemIndex = 0
           Items.Strings = (
             'Autom.'
@@ -301,17 +306,17 @@ object fmMain: TfmMain
           TabOrder = 1
         end
         object sePeso: TSpinEdit
-          Left = 266
+          Left = 253
           Height = 40
           Top = 22
-          Width = 80
+          Width = 90
           Font.Height = -16
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 2
         end
         object Label7: TLabel
-          Left = 266
+          Left = 253
           Height = 17
           Top = 7
           Width = 47
@@ -321,9 +326,9 @@ object fmMain: TfmMain
       object tsTesteBalanca: TTabSheet
         Caption = 'Teste Balança'
         ClientHeight = 74
-        ClientWidth = 388
+        ClientWidth = 353
         object bbAbrirPorta: TBitBtn
-          Left = 12
+          Left = 21
           Height = 48
           Top = 12
           Width = 144
@@ -558,7 +563,7 @@ object fmMain: TfmMain
           OnClick = bbIniciaBalancaClick
         end
         object bbEnviarReq: TBitBtn
-          Left = 208
+          Left = 186
           Height = 48
           Top = 12
           Width = 144
@@ -790,7 +795,7 @@ object fmMain: TfmMain
           }
           Spacing = 8
           TabOrder = 1
-          OnClick = bbIniciaBalancaClick
+          OnClick = bbEnviarReqClick
         end
       end
     end
@@ -804,7 +809,7 @@ object fmMain: TfmMain
     TabOrder = 1
   end
   object dpsCom: TDataPortSerial
-    Port = 'COM1'
+    Port = '/dev/ttyACM0'
     BaudRate = 9600
     DataBits = 8
     Parity = 'N'

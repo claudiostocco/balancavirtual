@@ -4,4 +4,4 @@
     socat -d -d pty,raw,echo=0 pty,raw,echo=0
 
   - Especificando o nome da porta
-    socat -d -d PTY,link=/dev/ttyVirtualS0,echo=0 PTY,link=/dev/ttyVirtualS1,echo=0
+    socat -d -d pty,raw,link=/dev/ttySV0,echo=0 pty,raw,link=/dev/ttySV1,echo=0
