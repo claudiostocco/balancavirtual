@@ -6,14 +6,16 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Buttons, Spin, DataPortSerial, DataPortUART;
+  Buttons, Spin, ComCtrls, DataPortSerial, DataPortUART;
 
 type
 
   { TfmMain }
 
   TfmMain = class(TForm)
+    bbEnviarReq: TBitBtn;
     bbIniciaBalanca: TBitBtn;
+    bbAbrirPorta: TBitBtn;
     cbParidade: TComboBox;
     cbBParada: TComboBox;
     cbBDados: TComboBox;
@@ -32,12 +34,14 @@ type
     Label7: TLabel;
     Label8: TLabel;
     mmCom: TMemo;
+    PageControl1: TPageControl;
     rgResponder: TRadioGroup;
     sePeso: TSpinEdit;
+    tsTesteBalanca: TTabSheet;
+    tsBalancaVirtual: TTabSheet;
     procedure bbIniciaBalancaClick(Sender: TObject);
     procedure dpsComDataAppear(Sender: TObject);
     procedure dpsComDataAppearUnsafe(Sender: TObject);
-    procedure dpsComModemStatus(Sender: TObject);
   private
     function PerguntaSeResponde: Boolean;
   public
@@ -102,10 +106,6 @@ begin
     dpsCom.Push(sSend);
     mmCom.Lines.Add('Enviou -> '+sSend);
   end;
-end;
-
-procedure TfmMain.dpsComModemStatus(Sender: TObject);
-begin
 end;
 
 function TfmMain.PerguntaSeResponde: Boolean;
