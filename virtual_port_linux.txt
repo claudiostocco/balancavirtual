@@ -5,3 +5,6 @@
 
   - Especificando o nome da porta
     socat -d -d pty,raw,link=/dev/ttySV0,echo=0 pty,raw,link=/dev/ttySV1,echo=0
+
+* Alternativa usando a pasta do usuário como device, caso de problema de permissão
+socat -d -d pty,rawer,link=/home/linux/dev/ttyV0,echo=0 pty,rawer,link=/home/linux/dev/ttyV1,echo=0

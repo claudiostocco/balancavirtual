@@ -1,6 +1,6 @@
 unit main;
 
-{$mode objfpc}{$H+}
+{$mode delphi}{$H+}
 
 interface
 
@@ -75,9 +75,8 @@ begin
   dpsCom.DataBits := StrToInt(cbBDados.Text);
   dpsCom.BaudRate := StrToInt(cbVelocidade.Text);
   if eDispVirtual.Text = '' then
-  begin
-    dpsCom.Port := SERIAL_NAME+cbPorta.Text;
-  end else
+    dpsCom.Port := SERIAL_NAME+cbPorta.Text
+  else
     dpsCom.Port := eDispVirtual.Text;
   dpsCom.Active := True;
   Sleep(500);
@@ -86,7 +85,7 @@ end;
 
 procedure TfmMain.bbEnviarReqClick(Sender: TObject);
 begin
-  dpsCom.Push('#5#13#10');
+  dpsCom.Push(Chr($5)+Chr($D)+Chr($A));
 end;
 
 procedure TfmMain.dpsComDataAppear(Sender: TObject);

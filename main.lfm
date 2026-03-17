@@ -8,6 +8,7 @@ object fmMain: TfmMain
   ClientHeight = 550
   ClientWidth = 800
   Position = poDesktopCenter
+  LCLVersion = '4.0.0.4'
   object gbCfg: TGroupBox
     Left = 0
     Height = 123
@@ -213,7 +214,7 @@ object fmMain: TfmMain
       TabOrder = 7
       object tsBalancaVirtual: TTabSheet
         Caption = 'Balança Virtual'
-        ClientHeight = 74
+        ClientHeight = 71
         ClientWidth = 353
         object bbIniciaBalanca: TBitBtn
           Left = 9
@@ -325,7 +326,7 @@ object fmMain: TfmMain
       end
       object tsTesteBalanca: TTabSheet
         Caption = 'Teste Balança'
-        ClientHeight = 74
+        ClientHeight = 71
         ClientWidth = 353
         object bbAbrirPorta: TBitBtn
           Left = 21
